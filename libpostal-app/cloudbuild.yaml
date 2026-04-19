@@ -1,5 +1,5 @@
 steps:
-  # Build image
+  # Build image.
   - name: 'gcr.io/cloud-builders/docker'
     args: [
       'build',
