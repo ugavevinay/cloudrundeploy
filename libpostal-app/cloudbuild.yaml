@@ -1,0 +1,33 @@
+steps:
+  # Build image
+  - name: 'gcr.io/cloud-builders/docker'
+    args: [
+      'build',
+      '-t',
+      'asia-south1-docker.pkg.dev/$PROJECT_ID/libpostal-repo/libpostal-api:latest',
+      '.'
+    ]
+
+  # Push image
+  - name: 'gcr.io/cloud-builders/docker'
+    args: [
+      'push',
+      'asia-south1-docker.pkg.dev/$PROJECT_ID/libpostal-repo/libpostal-api:latest'
+    ]
+
+  # Deploy to Cloud Run
+  - name: 'gcr.io/google.com/cloudsdktool/cloud-sdk'
+    entrypoint: gcloud
+    args:
+      [
+        'run', 'deploy', 'libpostal-service',
+        '--image', 'asia-south1-docker.pkg.dev/$PROJECT_ID/libpostal-repo/libpostal-api:latest',
+        '--region', 'asia-south1',
+        '--platform', 'managed',
+        '--memory', '4Gi',
+        '--cpu', '2',
+        '--allow-unauthenticated'
+      ]
+
+images:
+  - 'asia-south1-docker.pkg.dev/$PROJECT_ID/libpostal-repo/libpostal-api:latest'
