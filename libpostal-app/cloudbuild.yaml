@@ -4,7 +4,7 @@ steps:
     args: [
       'build',
       '-t',
-      'asia-south1-docker.pkg.dev/$PROJECT_ID/libpostal-repo/libpostal-api:latest',
+      'asia-south1-docker.pkg.dev/project-833189dc-cbb0-449d-b5f/libpostal-repo/libpostal-api:latest',
       '.'
     ]
 
@@ -12,7 +12,7 @@ steps:
   - name: 'gcr.io/cloud-builders/docker'
     args: [
       'push',
-      'asia-south1-docker.pkg.dev/$PROJECT_ID/libpostal-repo/libpostal-api:latest'
+      'asia-south1-docker.pkg.dev/project-833189dc-cbb0-449d-b5f/libpostal-repo/libpostal-api:latest'
     ]
 
   # Deploy to Cloud Run
@@ -21,7 +21,7 @@ steps:
     args:
       [
         'run', 'deploy', 'libpostal-service',
-        '--image', 'asia-south1-docker.pkg.dev/$PROJECT_ID/libpostal-repo/libpostal-api:latest',
+        '--image', 'asia-south1-docker.pkg.dev/project-833189dc-cbb0-449d-b5f/libpostal-repo/libpostal-api:latest',
         '--region', 'asia-south1',
         '--platform', 'managed',
         '--memory', '4Gi',
