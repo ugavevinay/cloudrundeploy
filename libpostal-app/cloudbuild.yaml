@@ -30,4 +30,4 @@ steps:
       ]
 
 images:
-  - 'asia-south1-docker.pkg.dev/$PROJECT_ID/libpostal-repo/libpostal-api:latest'
+  - 'asia-south1-docker.pkg.dev/project-833189dc-cbb0-449d-b5f/libpostal-repo/libpostal-api:latest'
